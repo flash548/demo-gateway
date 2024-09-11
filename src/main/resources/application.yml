@@ -1,43 +1,16 @@
 spring:
-  cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: route2
-            uri: http://localhost:8082
-            predicates:
-              - Path=/api/catalog/**
-            filters:
-              - StripPrefix=2
-          - id: route3
-            uri: http://localhost:8083
-            predicates:
-              - Path=/api/user-mgmt/**
-            filters:
-              - StripPrefix=2
   application:
-    name: demo
+    name: demo-gateway
   security:
     oauth2:
       client:
         registration:
           keycloak:
-            client-id: login-app
-            client-secret: u0xdgNh7PUFH4mLGemPvaq4D0aGUO7cP
             authorization-grant-type: authorization_code
             scope: openid
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/SpringBootKeycloak
             user-name: preferred_username
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/SpringBootKeycloak
-logging:
-  level:
-    org:
-      springframework:
-        cloud: TRACE
 server:
   port: 8081
 
