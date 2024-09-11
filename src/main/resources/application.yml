@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: demo-gateway
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            user-name: preferred_username
+server:
+  port: 8081
+
